@@ -9,7 +9,7 @@ description: >-
 license: MIT
 compatibility: 需要一个能执行浏览器自动化的 agent 环境(browser-use / chrome-devtools MCP / Playwright MCP 任一即可,动作映射见 references/browser-adapters.md)。Windows 下资料文本提取可选装 Office COM 与 PyMuPDF。
 metadata:
-  version: "1.2.0"
+  version: "1.3.0"
   homepage: https://github.com/Han-maker-wp/xuexitong-skill
 ---
 
@@ -41,6 +41,7 @@ metadata:
 |---|---|
 | 看有什么作业、截止日期汇总 | references/homework.md 第 1 节 |
 | 做作业/写作业/答题/章节测验 | references/homework.md 全文 |
+| 配置/使用自己的答案库或题库接口 | references/answer-sources.md |
 | 下载课件/资料/PPT/PDF | references/download.md |
 | 查通知/成绩/章节进度/考试安排 | references/info.md |
 | 挂机刷视频/完成任务点【灰色】 | references/tasks.md(先读顶部风险框) |
@@ -50,7 +51,7 @@ metadata:
 ## 作业主流程速览(详情以 references/homework.md 为准)
 
 1. **仪表盘**:遍历全部课程 → 作业/测验列表 → 未完成 + 截止时间 → 输出 markdown 待办清单。
-2. **作答**:进作答页 → 跑 `scripts/extract_questions.js` 提取题目(遇乱码走截图视觉读题)→ 需要时先下载课程资料作依据 → 逐题给出答案+理由+置信度 → 跑 `scripts/fill_answers.js` 回填。
+2. **作答**:进作答页 → 跑 `scripts/extract_questions.js` 提取题目(遇乱码走截图视觉读题)→ 有答案源先查(`scripts/answer_source.js`,见 answer-sources.md)→ 需要时先下载课程资料作依据 → 逐题给出答案+理由+置信度 → 跑 `scripts/fill_answers.js` 回填。
 3. **暂存**:只点"暂时保存" → 重新进页验证草稿确实在。
 4. **审核单**:生成"题号|答案|理由|置信度"markdown 存工作目录,明确告诉用户**草稿已暂存、未提交**。
 
@@ -63,4 +64,4 @@ metadata:
 
 ## 出错时
 
-先查 `references/pitfalls.md` 的 14 条速查表;页面改版导致选择器失效时,现场用 `document.querySelectorAll` 探测真实结构,更新本地理解后再继续,并在最后汇报里注明文档需要更新。
+先查 `references/pitfalls.md` 的 29 条速查表;页面改版导致选择器失效时,现场用 `document.querySelectorAll` 探测真实结构,更新本地理解后再继续,并在最后汇报里注明文档需要更新。
