@@ -107,7 +107,7 @@ cp -r xuexitong-skill/skills/xuexitong ~/.agents/skills/
 
 ## 致谢 / 参考
 
-调研中参考了社区公开项目与文档:[OCS 网课助手](https://github.com/ocsjs/ocsjs)、[Samueli924/chaoxing](https://github.com/Samueli924/chaoxing)、[cxOrz/chaoxing-signin](https://github.com/cxOrz/chaoxing-signin)(签到监控启发式、拍照签云盘机制、位置签到自带坐标的设计来源;本项目以浏览器操作实现,不使用其协议部分)、[Agent Skills 规范](https://agentskills.io) 等。本项目与其不同之处:**不刷协议、不做题库、人在回路**。
+调研中参考了社区公开项目与文档:[OCS 网课助手](https://github.com/ocsjs/ocsjs)、[Samueli924/chaoxing](https://github.com/Samueli924/chaoxing)(活跃维护的协议版,其"覆盖率不足只保存""关闭任务点处理策略"等产品思路被本项目借鉴)、[LangHY/chaoxing-exam](https://github.com/LangHY/chaoxing-exam)(考试页选择器/原生点击链/看想分离读题/重做复盘等大量实测细节的来源)、[cxOrz/chaoxing-signin](https://github.com/cxOrz/chaoxing-signin)(签到监控启发式、拍照签云盘机制、位置签到自带坐标的设计来源)、[Agent Skills 规范](https://agentskills.io) 等。本项目与它们不同之处:**不刷协议、不做题库、人在回路**。
 
 ## License
 

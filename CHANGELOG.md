@@ -1,5 +1,16 @@
 # 更新日志
 
+## 1.2.0 (2026-09-12)
+
+吸收 2026 年仍活跃的社区项目实测经验(Samueli924/chaoxing、LangHY/chaoxing-exam、ocsjs):
+
+- 题目提取兼容**考试页容器** `div.singleQuesId` 与题型标签 `.newZy_TItle`(此前只认作业页 questionLi)
+- 回填点击改为**选项行原生点击**(span.parentElement.click(),LangHY 40/40 实测最稳),并加已选中防 toggle 保护
+- 作答策略引入**"看想分离"读题法**(视觉只转录、推理单独做,实测显著降错率)
+- 新增"提交与复盘"节:用户授权提交后读取标准答案生成错题复盘,重做需再次授权(人在回路版满分机制)
+- 挂机遇关闭任务点:默认跳过汇报,重试≤3 次(借鉴 Samueli924 notopen 策略)
+- 踩坑表扩至 29 条:新增 #popok jQuery 绑定、frame 懒加载 JS 就绪验证、填空格式敏感、重做后 frame 重定位、2025 滑块验证码交人工等
+
 ## 1.1.0 (2026-09-12)
 
 签到模块 v2(吸收 [cxOrz/chaoxing-signin](https://github.com/cxOrz/chaoxing-signin) 的功能设计):

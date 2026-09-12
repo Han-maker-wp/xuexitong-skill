@@ -8,17 +8,19 @@
   const clean = (s) => (s || '').replace(/\s+/g, ' ').trim();
   const TYPE_RE = /^[(（]?(单选题|多选题|判断题|填空题|简答题|名词解释题?|论述题|计算题|其它|连线题|排序题)[)）]?/;
 
-  // 题根:新模板 div.questionLi;旧模板 div.TiMu。排除嵌套在内层的重复根。
-  let roots = [...document.querySelectorAll('div.questionLi, div.TiMu')]
-    .filter((el, i, arr) => arr.indexOf(el) === i && !el.querySelector('div.questionLi, div.TiMu'));
-  // 新模板整页容器类名可能是 "fanyaMarking TiMu",其内含 questionLi,已被上面过滤;
-  // 再兜底:只留含题干标记(mark_name/Zy_TItle/qtContent)的根
-  roots = roots.filter((q) => q.querySelector('h3.mark_name, .Zy_TItle, .qtContent, .mark_name'));
+  // 题根:作业页 div.questionLi;考试/章节测验页 div.singleQuesId(LangHY 2026-06 实测);旧模板 div.TiMu。
+  // 排除嵌套在内层的重复根。
+  let roots = [...document.querySelectorAll('div.questionLi, div.TiMu, div.singleQuesId')]
+    .filter((el, i, arr) => arr.indexOf(el) === i && !el.querySelector('div.questionLi, div.TiMu, div.singleQuesId'));
+  // 再兜底:只留含题干标记(mark_name/newZy_TItle/Zy_TItle/qtContent)的根
+  roots = roots.filter((q) => q.querySelector('h3.mark_name, .newZy_TItle, .Zy_TItle, .qtContent, .mark_name'));
 
   const questions = roots.map((q, i) => {
-    // 题型:typename 属性 > 题干前缀 "(单选题)" > 根类名(singleQues/judgeQues/multiQues/shortAnswer)
+    // 题型:typename 属性 > .newZy_TItle(考试页【单选题】标签)> 题干前缀 > 根类名
     const rootCls = q.className || '';
     let typeName = q.getAttribute('typename') || '';
+    const typeEl = q.querySelector('.newZy_TItle');
+    if (!typeName && typeEl) typeName = clean(typeEl.innerText).replace(/[【】\s]/g, '');
     const stemEl = q.querySelector('h3.mark_name, .Zy_TItle, .Cy_TItle, .qtContent');
     let stemRaw = clean(stemEl ? stemEl.innerText : '');
     if (!typeName) {

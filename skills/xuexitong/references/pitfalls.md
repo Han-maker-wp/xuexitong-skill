@@ -26,3 +26,10 @@
 | 20 | UEditor 附件按钮找不到 | 工具栏折叠 | 先点"更多"展开;file input 在同源子 iframe `input[name=file]` |
 | 21 | 截图报 capture failed | 浏览器面板在后台 | visibility capability 设 true 再截 |
 | 22 | bash 沙盒内没网,下载失败 | 环境网络隔离 | 用 PowerShell `Invoke-WebRequest`,或直接浏览器下载 |
+| 23 | 考试/章节测验页按作业页选择器提不到题 | 容器不同:`div.singleQuesId[data]`,题型标签 `.newZy_TItle` | extract_questions.js 已兼容两种容器(LangHY 2026-06) |
+| 24 | 点了选项但 AJAX 没提交,页面看着对了保存却是空 | 点 span 本身/eval onclick/纯改 class 不走原生事件链 | 点**选项行** `span.parentElement.click()`,间隔≥1.5s(LangHY 40/40 实测) |
+| 25 | 提交确认框点了没反应 | `#popok` 是 jQuery `.on('click')` 绑定,无 onclick 属性 | 必须真实点击(locator/force click);`dispatchEvent` 在 iframe 里静默失败 |
+| 26 | 考试 frame 里 JS 函数不存在,提交报错 | frame 懒加载,JS 未就绪 | 滚动触发加载后验证 `typeof btnBlueSubmit === 'function'` 再操作 |
+| 27 | 填空题明明对却判错 | 系统严格比对格式("50"≠"50 m/s") | 按题面口径与单位作答;不确定时两版答案都写进审核单让用户选 |
+| 28 | 重做后提交又失败 | 重做后 frame URL 变化、JS 可能未重新加载 | 重做后**重新定位 frame**,验证 JS 就绪再填(LangHY 已知问题) |
+| 29 | 登录/签到时弹滑块验证码 | 2025 年起平台风控升级 | **交人工滑动**,不尝试自动过滑块;过一次后通常一段时间内不再弹 |

@@ -9,7 +9,7 @@ description: >-
 license: MIT
 compatibility: 需要一个能执行浏览器自动化的 agent 环境(browser-use / chrome-devtools MCP / Playwright MCP 任一即可,动作映射见 references/browser-adapters.md)。Windows 下资料文本提取可选装 Office COM 与 PyMuPDF。
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   homepage: https://github.com/Han-maker-wp/xuexitong-skill
 ---
 

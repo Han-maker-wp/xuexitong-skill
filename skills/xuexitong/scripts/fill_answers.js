@@ -45,11 +45,19 @@ async (answers) => {
       if ((c && c.toUpperCase() === t.toUpperCase()) || (txt && (txt === t || txt.includes(t) || t.includes(txt)))) { hit = row; break; }
     }
     if (!hit) throw new Error('选项未匹配: ' + t);
-    // 点字母或整行(两种模板都吃)
-    const numEl = hit.querySelector('.num_option, [class*="num_option"]');
-    (numEl || hit).click();
+    // 防重复点(已选中再点会 toggle 取消)
+    const numEl0 = hit.querySelector('.num_option, [class*="num_option"]');
+    const cls0 = [...(numEl0 || hit).classList].join(' ') + ' ' + (hit.className || '');
+    if (/check_answ|check_answer|cur|active/.test(cls0)) {
+      return { clicked: rowChoice(hit) || t, verified: true, note: '本来就是选中态,跳过' };
+    }
+    // 点击目标:选项**行**(LangHY 40/40 实测 span.parentElement.click() 走原生事件链最稳;
+    // 点 span 本身/eval onclick/纯改 class 都可能 AJAX 不触发)
+    const rowEl = hit.closest('.clearfix') || hit;
+    rowEl.click();
     await wait(1600);
     // 校验:选中标记出现
+    const numEl = hit.querySelector('.num_option, [class*="num_option"]');
     const afterCls = [...(numEl || hit).classList].join(' ') + ' ' + (hit.className || '');
     const ok = /check_answ|check_answer|cur|active|on/.test(afterCls);
     return { clicked: rowChoice(hit) || t, verified: ok };
