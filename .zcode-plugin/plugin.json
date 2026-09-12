@@ -1,0 +1,8 @@
+{
+  "name": "xuexitong-skill",
+  "version": "0.1.0",
+  "description": "AI Agent 的学习通(超星)网页版全能技能包:作业辅助作答(只暂存不提交)、课件资料下载、截止日期/成绩/通知汇总,可选视频挂机与签到辅助。",
+  "author": { "name": "Han-maker-wp" },
+  "license": "MIT",
+  "skills": "skills"
+}

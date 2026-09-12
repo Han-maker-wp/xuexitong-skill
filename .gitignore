@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+*.swp
+*~
+.idea/
+.vscode/
+
+# 工作产物(测试运行时产生,不入库)
+*.log
+drafts/
+downloads/
+screenshots/
