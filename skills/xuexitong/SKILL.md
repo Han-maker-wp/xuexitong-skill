@@ -9,7 +9,7 @@ description: >-
 license: MIT
 compatibility: 需要一个能执行浏览器自动化的 agent 环境(browser-use / chrome-devtools MCP / Playwright MCP 任一即可,动作映射见 references/browser-adapters.md)。Windows 下资料文本提取可选装 Office COM 与 PyMuPDF。
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   homepage: https://github.com/Han-maker-wp/xuexitong-skill
 ---
 
@@ -21,7 +21,7 @@ metadata:
 
 1. **绝不自动提交**:作业/测验只允许点"暂时保存";仅当用户明确说"提交/交上去"后才允许点"提交"按钮。
 2. **绝不进入正式考试**:有监考/限时/防作弊机制的考试不进入、不作答、不看题,只做时间与状态查询。
-3. **不伪造签到证据**:拍照、位置、二维码、签到码签到只提醒用户,绝不代签、不伪造照片/GPS;普通/手势签在用户明确要求后可代点。
+3. **不伪造签到证据**:agent 绝不自行生成或挑选照片、GPS 坐标、二维码 enc、签到码。签到默认只检测+提醒;用户**本人提供证据**(自己的照片/自取的坐标/现场获取的 enc/数字码)且当场明确指示时,可代为提交,每次单独确认(边界详见 references/signin.md)。
 4. **视频挂机默认关闭**:仅用户当场明确要求才执行;只在真实浏览器里正常速度播放,不伪造 enc、不发协议请求、不改进度上报。
 5. **每步验证**:暂存/上传/提交等关键操作后必须重新进页核对;拿不准就截图确认。
 6. **隐私**:不把账号密码写进任何文件或输出;账号信息从用户本地配置/记忆读取,没有就引导用户在浏览器里手动登录。
