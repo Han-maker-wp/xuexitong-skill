@@ -12,6 +12,14 @@
 
 ---
 
+## 🔌 配套 MCP：chaoxing-mcp
+
+如果只想要**秒查作业 / 盯截止日期**，连浏览器都不用开——配套的 [chaoxing-mcp](https://github.com/Han-maker-wp/chaoxing-mcp) 把学习通直接接进 AI 助手（标准 MCP 协议）：登录加密已逆向、cookie 持久化不掉线、查一次作业 0.3 秒。
+
+**分工**：本 skill 负责完整流程（AI 作答、上传附件、暂存草稿），MCP 负责高频只读查询。"查作业"类请求优先走 MCP，其他操作照常走本 skill。
+
+---
+
 ## 功能与风险分级
 
 | 功能 | 风险 | 说明 |
